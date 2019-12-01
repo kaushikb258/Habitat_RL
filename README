@@ -64,6 +64,10 @@ This trains the VAE for Depth images - this also takes a few hours
 Open hab1.py and set the path to where the yaml is (it is the code base directory if you place the yaml as done so in this repo):   
 pwd = "/home/kb/habitat_experiments/code/vae_128/t1/"
 
+For a clean training start from scratch (i.e., not loading a previous ckpt file), set the following at the top of hab1.py:
+load_ckpt = False
+ep_start = 0
+
 Train the Reinforcement Learning agent by typing:
 
 python hab1.py
