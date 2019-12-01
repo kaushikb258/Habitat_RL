@@ -19,8 +19,8 @@ print(config)
 
 map_res = int(config['TASK']['TOP_DOWN_MAP']['MAP_RESOLUTION'])
 
-load_ckpt = True #False
-ep_start = 145000 #0
+load_ckpt = False
+ep_start = 0
 
 
 EPSILON_CLIP = 0.1 # init clip value
