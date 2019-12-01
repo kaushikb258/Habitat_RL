@@ -1,0 +1,89 @@
+This repo consists of Tensorflow 1.x code to train an agent to navigate in the Habitat environment (https://arxiv.org/abs/1904.01201). 
+
+
+0. Resources: 
+
+Habitat paper:
+https://arxiv.org/abs/1904.01201
+
+Habitat-Sim:
+https://github.com/facebookresearch/habitat-sim
+
+Habitat-Api
+https://github.com/facebookresearch/habitat-api
+
+
+
+
+1. Download Gibson data files:
+
+Download the Gibson Quantico files and place them in some directory called data/
+data/ should contain the two sub dirs:
+
+datasets
+scene_datasets
+ 
+Either data/ should be present in the location of this code directory, otherwise create a symbolic link and place it here.
+We will focus on the Quantico environment in the Gibson dataset. You can create a similar directory structure and place only Quantico in it; alternatively, if you prefer to use any other Gibson environment, or even multiple such Gibson environments, place them appropriately in this directory.
+
+
+2. Set the path in the yaml file:
+
+Go to: pointnav_gibson_kb.yaml and set the following path as appropriate:
+DATA_PATH: /home/kb/habitat_experiments/data/datasets/pointnav/gibson/v1/{split}/{split}.json.gz
+
+
+3. Collect raw RGB and Depth images by running the following:
+
+cd collect_imgs/
+mkdir imgs
+mkdir imgs/depth
+mkdir imgs/rgb
+python collect_imgs2.py
+
+This will save the raw RGB and Depth images by randomly spawning the agent and rotating it 360 degrees to get a full view of the surroundings.
+
+
+4. Train the VAEs
+
+cd vae/
+
+Open train_vae.py and set: 
+img_train = 'rgb' 
+python train_vae.py
+This will train the VAE for RGB images - this takes a few hours
+
+Then, open train_vae.py and set:
+img_train = 'depth'
+python train_vae.py
+This trains the VAE for Depth images - this also takes a few hours
+
+
+5. To train the PPO-LSTM agent, go to the code main directory (which is one "../" from the VAE directory)
+
+Open hab1.py and set the path to where the yaml is (it is the code base directory if you place the yaml as done so in this repo):   
+pwd = "/home/kb/habitat_experiments/code/vae_128/t1/"
+
+Train the Reinforcement Learning agent by typing:
+
+python hab1.py
+
+This can take a few days to train as it is a very intensive run!
+
+
+6. After the training is complete, to test the agent, open hab1_test.py and set the path to the yaml file:
+
+pwd = "/home/kb/habitat_experiments/code/vae_128/t1/"
+
+To test the agent, run this file:
+
+python hab1_test.py
+
+
+
+
+TO DO:
+
+Also provided is the Astar code for the same problem to plan path in a top-down map. Plan is to couple RL with Astar.
+
+
