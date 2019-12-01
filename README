@@ -69,6 +69,7 @@ Train the Reinforcement Learning agent by typing:
 python hab1.py
 
 This can take a few days to train as it is a very intensive run!
+See the attached SPL plot - the blue is the best performing agent with a success rate of over 90% and a mean SPL of about 0.77.
 
 
 6. After the training is complete, to test the agent, open hab1_test.py and set the path to the yaml file:
