@@ -86,6 +86,15 @@ python hab1_test.py
 
 
 
+POTENTIAL ERRORS
+1. When this code was developed, the actions were stored in SimulatorActions, which has since been moved to HabitatSimActions by the developers of Habitat
+To fix this, import the following instead of SimulatorActions:
+from habitat.sims.habitat_simulator.actions import HabitatSimActions
+Also replace every occurrence of 'SimulatorActions' with 'HabitatSimActions'
+
+
+
+
 
 TO DO:
 
