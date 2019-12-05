@@ -13,6 +13,7 @@ Habitat-Api
 https://github.com/facebookresearch/habitat-api
 
 
+NOTE: this code was tested in Tensorflow 1.8, Cuda 9.0, Ubuntu 18.04
 
 
 1. Download Gibson data files:
