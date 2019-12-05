@@ -87,11 +87,15 @@ python hab1_test.py
 
 
 POTENTIAL ERRORS
+
 1. When this code was developed, the actions were stored in SimulatorActions, which has since been moved to HabitatSimActions by the developers of Habitat
 To fix this, import the following instead of SimulatorActions:
 from habitat.sims.habitat_simulator.actions import HabitatSimActions
 Also replace every occurrence of 'SimulatorActions' with 'HabitatSimActions'
 
+2. pointgoal: this code was developed using a Habitat version where state['pointgoal'] was a list of 3 entries, i.e., 3D, with the middle entry being useless. In the newer Habitat, the developers have made this 2D. 
+Fix this by commenting out pointgoal = [pointgoal[0], pointgoal[2]]:
+pointgoal = s["pointgoal"]; #pointgoal = [pointgoal[0], pointgoal[2]]
 
 
 
