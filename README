@@ -13,7 +13,7 @@ Habitat-Api
 https://github.com/facebookresearch/habitat-api
 
 
-NOTE: this code was tested in Tensorflow 1.8, Cuda 9.0, Ubuntu 18.04
+NOTE: this code was tested in Tensorflow 1.8, Cuda 9.0, Ubuntu 18.04, Habitat 0.1.2
 
 
 1. Download Gibson data files:
@@ -99,7 +99,7 @@ Fix this by commenting out pointgoal = [pointgoal[0], pointgoal[2]] and replace 
 pointgoal = s["pointgoal_with_gps_compass"]; #pointgoal = [pointgoal[0], pointgoal[2]]
 
 3. The pointgoal sensor in the newer Habitat (0.1.3) is called "pointgoal_with_gps_compass." So, the yaml file must also be changed.  
-
+Use this yaml for Habitat 0.1.3: pointnav_gibson_kb_habitat_013.yaml
 
 TO DO:
 
